@@ -1,16 +1,16 @@
-const router = require("express").Router();
+const router = require("express").Router()
 
-router.get('/', (req, res) => {
-  res.send('all users')
-})
+const {
+  getAllUsers,
+  getOneUser,
+  createUser
+} = require('../controllers/user.controller')
 
-router.get('/:id', (req, res) => {
-  res.send(`User ${req.params.id}`)
-})
+router.get('/', getAllUsers)
 
-router.post('/', (req, res) => {
-  res.send('User created')
-})
+router.get('/:id', getOneUser)
+
+router.post('/', createUser)
 
 router.put('/:id', (req, res) => {
   res.send(`User ${req.params.id} updated`)
