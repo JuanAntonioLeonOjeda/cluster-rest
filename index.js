@@ -1,5 +1,16 @@
 require("dotenv").config()
 
-const { checkDBConnection } = require('./database')
+const { 
+  checkDBConnection, 
+  syncModels 
+} = require('./database')
 
-checkDBConnection()
+const User = require('./api/models/user.model')
+const Pet = require('./api/models/pet.model')
+
+const startDB = async () => {
+  await checkDBConnection()
+  syncModels()
+}
+
+startDB()
