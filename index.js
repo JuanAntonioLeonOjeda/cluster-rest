@@ -8,13 +8,13 @@ const {
   syncModels 
 } = require('./database')
 
-const User = require('./api/models/user.model')
-const Pet = require('./api/models/pet.model')
+const defineRelations = require('./database/relations')
 
 const router = require("./api/routes")
 
 const startDB = async () => {
   await checkDBConnection()
+  await defineRelations()
   syncModels()
 }
 
