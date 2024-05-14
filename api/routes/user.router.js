@@ -5,12 +5,18 @@ const {
   getOneUser,
   createUser,
   addPet,
-  createAndAddPet
-} = require("../controllers/user.controller");
+  createAndAddPet,
+  getOwnProfile
+} = require("../controllers/user.controller")
 
-router.get('/', getAllUsers)
+const {
+  checkAuth,
+  checkAdmin
+} = require('../middlewares')
 
-router.get('/:id', getOneUser)
+router.get('/', checkAuth, getAllUsers)
+router.get('/profile', checkAuth, getOwnProfile)
+router.get('/:id', checkAuth, checkAdmin, getOneUser)
 
 router.post('/', createUser)
 router.post("/:id/createPet", createAndAddPet)

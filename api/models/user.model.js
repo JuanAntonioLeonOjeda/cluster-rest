@@ -7,6 +7,14 @@ const User = connection.define('user', {
     },
     email: {
       type: DataTypes.STRING
+    },
+    password: {
+      type: DataTypes.STRING,
+      defaultValue: '123'
+    },
+    role: {
+      type: DataTypes.ENUM('user', 'admin'),
+      defaultValue: 'user'
     }
   },
  {

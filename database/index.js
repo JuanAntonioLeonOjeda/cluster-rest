@@ -22,7 +22,7 @@ const checkDBConnection = async () => {
 
 const syncModels = async() => {
   try {
-    await connection.sync({ alter: true })
+    await connection.sync()
     console.log('All models were synchronized successfully.')
   } catch (error) {
     console.log(error)
